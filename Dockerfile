@@ -1,5 +1,5 @@
-FROM debian:stable-slim
-LABEL maintainer="john.k.tims@gmail.com"
+FROM nvidia/opencl:runtime-ubuntu16.04
+LABEL maintainer="rrculligan@gmail.com"
 
 ENV FAH_VERSION_MINOR=7.5.1
 ENV FAH_VERSION_MAJOR=7.5
@@ -20,4 +20,5 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 EXPOSE 7396
 
 ENTRYPOINT ["FAHClient", "--web-allow=0/0:7396", "--allow=0/0:7396"]
-CMD ["--user=Anonymous", "--team=0", "--gpu=false", "--smp=true", "--power=full"]
+CMD ["--user=Anonymous", "--team=0", "--gpu=true", "--smp=true", "--power=full"]
+
