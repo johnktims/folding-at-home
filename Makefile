@@ -1,10 +1,12 @@
 build:
 	docker build -t theculliganman/folding-at-home:latest .
 
-run: build
+run:
+	$(MAKE) build
+	$(MAKE) stop || true
 	docker run \
 		--rm \
-		-it \
+		-d \
 		--gpus all \
 		--name folding-at-home \
 		-p 7396:7396 \

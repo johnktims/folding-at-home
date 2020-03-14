@@ -14,6 +14,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         dpkg --install /tmp/fah.deb &&\
         apt-get remove -y curl &&\
         apt-get autoremove -y &&\
+        apt-get clean && \
         rm --recursive --verbose --force /tmp/* /var/log/* /var/lib/apt/
 
 # Web viewer
