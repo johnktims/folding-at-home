@@ -12,7 +12,7 @@ run:
 		-p 7396:7396 \
 		theculliganman/folding-at-home:latest \
     	--user=theculliganman \
-		--team=11675 \
+		--team=229500 \
 		--gpu=true \
 		--smp=true
 
