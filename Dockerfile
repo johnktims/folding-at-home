@@ -21,5 +21,5 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 EXPOSE 7396
 
 ENTRYPOINT ["FAHClient", "--web-allow=0/0:7396", "--allow=0/0:7396"]
-CMD ["--user=Anonymous", "--team=0", "--gpu=true", "--smp=true", "--power=full"]
+CMD ["--user=theculliganman", "--team=229500", "--gpu=true", "--smp=true", "--power=full"]
 
