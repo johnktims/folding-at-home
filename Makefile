@@ -15,7 +15,7 @@ run:
 		-d \
 		--gpus all \
 		--name ${CONTAINER_NAME} \
-		--restart unless_stopped \
+		--restart unless-stopped \
 		-p 7396:7396 \
 		-v $(PWD)/workdir:/usr/src/app \
 		${IMAGE_NAME}:${TAG}
