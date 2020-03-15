@@ -2,6 +2,7 @@ TAG := latest
 IMAGE_NAME := theculliganman/folding-at-home
 CONTAINER_NAME := folding-at-home
 
+
 build:
 	docker build -t ${IMAGE_NAME}:${TAG} .
 
@@ -22,6 +23,9 @@ run:
 
 logs:
 	docker logs -f --tail=1000 ${CONTAINER_NAME}
+
+exec:
+	docker top ${CONTAINER_NAME}
 
 stop:
 	docker stop ${CONTAINER_NAME}
