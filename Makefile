@@ -1,5 +1,8 @@
+TAG := "latest"
+CONTAINER_NAME := "folding-at-home"
+
 build:
-	docker build -t theculliganman/folding-at-home:latest .
+	docker build -t theculliganman/folding-at-home:${TAG} .
 
 run:
 	$(MAKE) build
@@ -8,16 +11,16 @@ run:
 		--rm \
 		-d \
 		--gpus all \
-		--name folding-at-home \
+		--name ${CONTAINER_NAME} \
 		-p 7396:7396 \
 		-v $(PWD)/workdir:/usr/src/app \
-		theculliganman/folding-at-home:latest
+		theculliganman/folding-at-home:${TAG}
 
 logs:
-	docker logs -f --tail=1000 folding-at-home
+	docker logs -f --tail=1000 
 
 stop:
-	docker stop folding-at-home
+	docker stop ${CONTAINER_NAME}
 
 clean: stop
-	docker rmi folding-at-home
+	docker rmi ${CONTAINER_NAME}
