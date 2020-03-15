@@ -10,6 +10,7 @@ run:
 		--gpus all \
 		--name folding-at-home \
 		-p 7396:7396 \
+                -v ./workdir:/usr/src/app \
 		theculliganman/folding-at-home:latest
 
 logs:
