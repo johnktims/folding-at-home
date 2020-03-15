@@ -17,7 +17,7 @@ run:
 		theculliganman/folding-at-home:${TAG}
 
 logs:
-	docker logs -f --tail=1000 
+	docker logs -f --tail=1000 ${CONTAINER_NAME}
 
 stop:
 	docker stop ${CONTAINER_NAME}
