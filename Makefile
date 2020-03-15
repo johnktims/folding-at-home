@@ -1,8 +1,12 @@
 TAG := latest
+IMAGE_NAME := theculliganman/folding-at-home
 CONTAINER_NAME := folding-at-home
 
 build:
-	docker build -t theculliganman/folding-at-home:${TAG} .
+	docker build -t ${IMAGE_NAME}:${TAG} .
+
+build:
+	docker push -t ${IMAGE_NAME}:${TAG}
 
 run:
 	$(MAKE) build
@@ -14,7 +18,7 @@ run:
 		--name ${CONTAINER_NAME} \
 		-p 7396:7396 \
 		-v $(PWD)/workdir:/usr/src/app \
-		theculliganman/folding-at-home:${TAG}
+		${IMAGE_NAME}:${TAG}
 
 logs:
 	docker logs -f --tail=1000 ${CONTAINER_NAME}
