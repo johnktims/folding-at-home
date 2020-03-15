@@ -24,7 +24,7 @@ run:
 logs:
 	docker logs -f --tail=1000 ${CONTAINER_NAME}
 
-exec:
+top:
 	docker top ${CONTAINER_NAME}
 
 stop:
