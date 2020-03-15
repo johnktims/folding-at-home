@@ -24,3 +24,6 @@ stop:
 
 clean: stop
 	docker rmi ${CONTAINER_NAME}
+
+exec:
+	docker exec -it ${CONTAINER_NAME} bash
