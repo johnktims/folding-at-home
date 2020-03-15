@@ -12,7 +12,6 @@ run:
 	$(MAKE) build
 	$(MAKE) stop || true
 	docker run \
-		--rm \
 		-d \
 		--gpus all \
 		--name ${CONTAINER_NAME} \
