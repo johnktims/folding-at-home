@@ -20,6 +20,9 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
 # Web viewer
 EXPOSE 7396
 
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+
 ENTRYPOINT ["FAHClient", "--web-allow=0/0:7396", "--allow=0/0:7396"]
 CMD ["--user=theculliganman", "--team=229500", "--gpu=true", "--smp=true", "--power=full"]
 
