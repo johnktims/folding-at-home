@@ -1,5 +1,5 @@
-TAG := "latest"
-CONTAINER_NAME := "folding-at-home"
+TAG := latest
+CONTAINER_NAME := folding-at-home
 
 build:
 	docker build -t theculliganman/folding-at-home:${TAG} .
