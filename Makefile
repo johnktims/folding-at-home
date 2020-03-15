@@ -6,7 +6,7 @@ build:
 	docker build -t ${IMAGE_NAME}:${TAG} .
 
 push: build
-	docker push -t ${IMAGE_NAME}:${TAG}
+	docker push ${IMAGE_NAME}:${TAG}
 
 run:
 	$(MAKE) build
