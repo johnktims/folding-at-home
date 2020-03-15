@@ -5,7 +5,7 @@ CONTAINER_NAME := folding-at-home
 build:
 	docker build -t ${IMAGE_NAME}:${TAG} .
 
-build:
+push: build
 	docker push -t ${IMAGE_NAME}:${TAG}
 
 run:
