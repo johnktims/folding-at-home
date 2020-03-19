@@ -1,4 +1,4 @@
-FROM debian:stable-slim
+FROM nvidia/cuda:latest
 LABEL maintainer="john.k.tims@gmail.com"
 
 ENV FAH_VERSION_MINOR=7.5.1
@@ -7,10 +7,14 @@ ENV FAH_VERSION_MAJOR=7.5
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN useradd -ms /bin/bash folder
+RUN mkdir -p /etc/OpenCL/vendors && \
+    echo "libnvidia-opencl.so.1" > /etc/OpenCL/vendors/nvidia.icd
 
-RUN apt-get update && apt-get install --no-install-recommends -y \
+RUN apt-get update && apt-get install --no-install-recommends -y nvidia-opencl-dev ocl-icd-opencl-dev clinfo rsync wget vim file less \
         curl adduser bzip2 ca-certificates &&\
         curl -o /tmp/fah.deb https://download.foldingathome.org/releases/public/release/fahclient/debian-stable-64bit/v${FAH_VERSION_MAJOR}/fahclient_${FAH_VERSION_MINOR}_amd64.deb &&\
+        curl -o /tmp/fahcontrol.deb https://download.foldingathome.org/releases/public/release/fahcontrol/debian-testing-64bit/v7.4/fahcontrol_7.4.4-1_all.deb &&\
+        curl -o /tmp/fahviewer.deb https://download.foldingathome.org/releases/public/release/fahviewer/debian-testing-64bit/v7.4/fahviewer_7.4.4_amd64.deb &&\
         mkdir -p /etc/fahclient/ &&\
         touch /etc/fahclient/config.xml &&\
         dpkg --install /tmp/fah.deb &&\
@@ -18,6 +22,8 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         apt-get autoremove -y &&\
         rm --recursive --verbose --force /tmp/* /var/log/* /var/lib/apt/
 
+ENV NVIDIA_VISIBLE_DEVICES all
+ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 # Web viewer
 EXPOSE 7396
 
