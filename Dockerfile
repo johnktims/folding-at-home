@@ -22,7 +22,7 @@ RUN apt-get update && apt-get install --no-install-recommends -y \
         dpkg --install /tmp/fah.deb &&\
         apt-get remove -y curl &&\
         apt-get autoremove -y &&\
-        rm -rf /tmp/* /var/log/* /var/lib/apt/
+        rm --recursive --verbose --force /tmp/* /var/log/* /var/lib/apt/
 
 ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
