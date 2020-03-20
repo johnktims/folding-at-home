@@ -7,7 +7,7 @@ metadata:
   labels:
     app: fahclient
 spec:
-  replicas: 6
+  replicas: 1
   selector:
     matchLabels:
       app: fahclient
@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
       - name: fahclient
-        image: quay.io/nibalizer/fahclient:latest
-        command: ["FAHClient", "--web-allow=0/0:7396", "--allow=0/0:7396", "--user=Anonymous", "--team=0", "--gpu=true", "--smp=true", "--power=full", "-v"]
+        image: johnktims/fahclient:latest
+        command: ["FAHClient", "--web-allow=0/0:7396", "--allow=0/0:7396", "--user=Anonymous", "--team=0", "--gpu=true", "--smp=true", "--power=full"]
         imagePullPolicy: Always
         resources:
           limits:
