@@ -6,7 +6,10 @@ ENV FAH_VERSION_MAJOR=7.5
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN useradd -ms /bin/bash folder
+RUN groupadd -g 9999 folder && \
+    useradd -r -b /home -u 9999 -g folder folder
+
+RUN mkdir /home/folder && chown folder:folder /home/folder && chmod 700 /home/folder
 
 RUN apt-get update && apt-get install --no-install-recommends -y \
         curl adduser bzip2 ca-certificates &&\
