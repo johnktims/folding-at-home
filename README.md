@@ -3,7 +3,7 @@ Docker container for running [Folding@Home](http://folding.stanford.edu/)
 ### Example usage
 ```bash
 docker run --rm -it -p7396:7396 johnktims/folding-at-home:latest \
-    --user=John_Tims --team=11675 --power=full
+    --user=Anonymous --team=0 --power=full
 ```
 
 The web console is available on port `7396`.
@@ -14,7 +14,7 @@ If you have Docker 19.03+, Nvidia drivers, and `nvidia-docker-toolkit` installed
 on the host, you can start folding by adding `--gpus all`.
 ```
 docker run --gpus all --rm -it -p7396:7396 johnktims/folding-at-home:latest \
-    --user=John_Tims --team=11675 --power=full
+    --user=Anonymous --team=0 --power=full
 ```
 
 # Ubuntu setup guide
@@ -51,5 +51,5 @@ distribution=$(. /etc/os-release;echo $ID$VERSION_ID) &&\
 ### Start folding
 ```
 docker run --rm -it --gpus=all -p7396:7396 johnktims/folding-at-home:latest \
-                    --user=John_Tims --team=11675 --power=full
+                    --user=Anonymous --team=0 --power=full
 ```
