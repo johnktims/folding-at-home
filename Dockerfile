@@ -12,7 +12,7 @@ RUN apt-get -qq update &&\
         clinfo \
         curl \
         ocl-icd-libopencl1 &&\
-    useradd --create-home --uid 9999 --user-group folder &&\
+    useradd --create-home --uid 9999 --shell /usr/sbin/nologin --user-group folder &&\
         chmod 700 /home/folder &&\
     mkdir --parents /etc/OpenCL/vendors &&\
         ln --symbolic /usr/lib/x86_64-linux-gnu/libOpenCL.so.1 /usr/lib/x86_64-linux-gnu/libOpenCL.so &&\
