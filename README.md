@@ -1,5 +1,7 @@
 Docker container for running [Folding@Home](http://folding.stanford.edu/)
 
+![Docker pulls](https://img.shields.io/docker/pulls/johnktims/folding-at-home.svg)
+
 ### Example usage
 ```bash
 docker run --rm -it -p7396:7396 johnktims/folding-at-home:latest \
