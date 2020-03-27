@@ -1,0 +1,33 @@
+# assumes https://github.com/NVIDIA/k8s-device-plugin or similar is deployed
+# otherwise mount in /dev/nvidia* manually (probably other steps too)
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: fahclient-deployment
+  labels:
+    app: fahclient
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fahclient
+  template:
+    metadata:
+      labels:
+        app: fahclient
+    spec:
+      containers:
+      - name: fahclient
+        image: johnktims/fahclient:latest
+        command: ["FAHClient", "--web-allow=0/0:7396", "--allow=0/0:7396", "--user=Anonymous", "--team=0", "--gpu=true", "--smp=true", "--power=full"]
+        imagePullPolicy: Always
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+        volumeMounts:
+        - mountPath: /host/bin
+          name: nvidia0
+      volumes:
+        - name: nvidia0
+          hostPath:
+            path: /usr/bin
