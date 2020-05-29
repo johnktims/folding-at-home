@@ -1,8 +1,8 @@
 FROM nvidia/cuda:9.2-base
 LABEL maintainer="john.k.tims@gmail.com"
 
-ENV FAH_VERSION_MINOR=7.5.1
-ENV FAH_VERSION_MAJOR=7.5
+ENV FAH_VERSION_MINOR=7.6.13
+ENV FAH_VERSION_MAJOR=7.6
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get -qq update &&\
